@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026川渝春节全家欢旅·终极深度全量版</title>
+    <title>2026川渝春节悠闲旅行程单</title>
     <style>
         :root {
-            --primary: #2F4F4F; /* 深石墨绿 */
-            --secondary: #B29671; /* 莫兰迪金 */
+            --primary: #2F4F4F; 
+            --secondary: #B29671; 
             --bg: #F8F9FA;
             --card-bg: #FFFFFF;
             --text-main: #2C2C2C;
@@ -15,63 +15,70 @@
         }
 
         html { scroll-behavior: smooth; }
-        body { font-family: 'PingFang SC', 'STHeiti', 'Microsoft YaHei', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.8; margin: 0; padding: 0; }
+        body { font-family: 'PingFang SC', 'STHeiti', 'Microsoft YaHei', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.7; margin: 0; padding: 0; }
         
-        /* 强制修复加粗显示 */
-        b, strong { font-weight: 900 !important; color: #000 !important; display: inline; }
+        /* 核心修复：加粗显示 */
+        b, strong { font-weight: 900 !important; color: #000 !important; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 15px; }
         
-        header { text-align: center; padding-bottom: 30px; border-bottom: 2px solid var(--secondary); margin-bottom: 30px; }
-        header h1 { font-weight: 300; letter-spacing: 6px; color: var(--primary); margin-bottom: 10px; font-size: 2.2em; }
-        header p { color: var(--secondary); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; }
+        header { text-align: center; padding: 20px 0; border-bottom: 2px solid var(--secondary); margin-bottom: 20px; }
+        header h1 { font-weight: 400; letter-spacing: 2px; color: var(--primary); margin: 0; font-size: 1.8em; }
+        header p { color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8em; margin-top: 5px; }
 
         /* 导航按钮：两行展示 (5+5) */
-        .nav-container { position: sticky; top: 0; z-index: 100; background: rgba(248, 249, 250, 0.98); padding: 15px 0; border-bottom: 1px solid #ddd; margin-bottom: 50px; }
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 1000px; margin: 0 auto; padding: 0 10px; }
+        .nav-container { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); padding: 10px 0; border-bottom: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 0 10px; }
         .nav-btn { 
             background: #fff; color: var(--primary); border: 1px solid var(--primary); 
-            padding: 10px 5px; border-radius: 4px; cursor: pointer; 
-            font-size: 0.8em; text-decoration: none; transition: 0.3s; 
+            padding: 8px 2px; border-radius: 4px; cursor: pointer; 
+            font-size: 0.75em; text-decoration: none; transition: 0.2s; 
             display: flex; flex-direction: column; align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        .nav-btn b { font-size: 1.1em; margin-bottom: 2px; color: var(--primary) !important; }
-        .nav-btn span { font-size: 0.7em; color: var(--text-muted); text-align: center; line-height: 1.2; }
-        .nav-btn:hover { background: var(--primary); color: #fff !important; }
-        .nav-btn:hover b, .nav-btn:hover span { color: #fff !important; }
+        .nav-btn b { font-size: 1em; margin-bottom: 2px; color: var(--primary) !important; }
+        .nav-btn span { font-size: 0.65em; color: var(--text-muted); line-height: 1.1; }
 
-        /* 日程卡片 */
-        .day-card { background: var(--card-bg); margin-bottom: 80px; border-radius: 8px; overflow: hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.07); border-top: 8px solid var(--primary); }
-        .day-header { background: #EAE3DA; padding: 30px 45px; display: flex; justify-content: space-between; align-items: center; }
-        .day-header h2 { margin: 0; color: var(--primary); font-size: 1.8em; letter-spacing: 2px; }
-        .day-header .date-tag { color: var(--secondary); font-weight: bold; font-size: 1.2em; }
+        /* 仅在支持悬停的设备上应用 hover */
+        @media (hover: hover) {
+            .nav-btn:hover { background: var(--primary); color: #fff !important; }
+            .nav-btn:hover b, .nav-btn:hover span { color: #fff !important; }
+        }
 
-        .day-content { padding: 45px; }
-        .section { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid #f0f0f0; }
+        /* 详细日程 */
+        .day-card { background: var(--card-bg); margin-bottom: 40px; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
+        .day-header { background: #EAE3DA; padding: 20px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .day-header h2 { margin: 0; color: var(--primary); font-size: 1.3em; letter-spacing: 1px; }
+        .day-header .date-tag { color: var(--secondary); font-weight: bold; font-size: 0.9em; }
+
+        .day-content { padding: 20px 15px; }
+        .section { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
         .section:last-child { border-bottom: none; }
 
-        .time-tag { display: inline-block; background: var(--secondary); color: white; padding: 5px 20px; font-size: 0.9em; margin-bottom: 20px; border-radius: 2px; font-weight: bold; }
-        .spot-title { font-size: 2em; color: var(--primary); margin: 8px 0; font-weight: 700; display: block; }
+        .time-tag { display: inline-block; background: var(--secondary); color: white; padding: 3px 12px; font-size: 0.8em; margin-bottom: 10px; border-radius: 2px; font-weight: bold; }
+        .spot-title { font-size: 1.5em; color: var(--primary); margin: 5px 0; font-weight: 700; display: block; }
         
-        .meta-info { display: flex; flex-direction: column; gap: 8px; margin-bottom: 30px; font-size: 1em; }
-        .subway-info { color: #8c7b52; font-weight: 800; }
-        .transport-advice { color: #556B2F; font-weight: 800; }
+        .meta-info { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; font-size: 0.9em; }
+        .subway-info { color: #8c7b52; font-weight: 700; }
+        .transport-advice { color: #556B2F; font-weight: 700; }
         
-        .description { text-align: justify; color: var(--text-muted); font-size: 1.15em; margin-bottom: 30px; }
-        .description p { margin-bottom: 20px; text-indent: 2em; }
+        .description { text-align: justify; color: var(--text-muted); font-size: 1.05em; margin-bottom: 20px; }
+        .description p { margin-bottom: 15px; text-indent: 2em; }
 
-        .food-box { background: #FCF9F5; border-left: 8px solid var(--secondary); padding: 35px; margin-top: 40px; border-radius: 0 12px 12px 0; }
-        .food-box h4 { margin-top: 0; color: var(--primary); font-size: 1.3em; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
-        .food-item { margin-bottom: 12px; font-size: 1.05em; }
+        .food-box { background: #FCF9F5; border-left: 5px solid var(--secondary); padding: 20px 15px; margin-top: 25px; border-radius: 0 8px 8px 0; }
+        .food-box h4 { margin-top: 0; color: var(--primary); font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .food-item { margin-bottom: 8px; font-size: 0.95em; }
         .food-item strong { color: var(--secondary) !important; font-weight: 800; }
 
-        .footer { text-align: center; padding: 20px; color: #888; font-size: 1em; background: #eee; }
+        .footer { text-align: center; padding: 40px 20px; color: #888; font-size: 0.9em; background: #eee; }
 
-        @media (max-width: 768px) {
-            .nav-grid { grid-template-columns: repeat(2, 1fr); }
-            .day-header { flex-direction: column; gap: 15px; text-align: center; }
-            .day-content { padding: 25px; }
+        /* 针对电脑显示器的微调 */
+        @media (min-width: 769px) {
+            header h1 { font-size: 2.2em; }
+            .day-header { padding: 30px 40px; }
+            .day-content { padding: 40px; }
+            .spot-title { font-size: 1.8em; }
+            .description { font-size: 1.15em; }
         }
     </style>
 </head>
