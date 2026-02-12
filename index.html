@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026川渝春节悠闲全家欢旅</title>
+    <title>2026川渝春节全家欢旅·终极定制版</title>
     <style>
         :root {
             --primary: #3C4F4E; /* 莫兰迪石青 */
-            --secondary: #B29671; /* 古金色 */
-            --accent: #EAE3DA; /* 莫兰迪灰 */
+            --secondary: #B29671; /* 浅香槟金 */
             --bg: #F7F3F0; /* 暖灰底 */
+            --card-bg: #FFFFFF;
             --text-main: #2C2C2C;
             --text-muted: #5E5E5E;
-            --card-bg: #FFFFFF;
         }
 
         html { scroll-behavior: smooth; }
         body { font-family: 'PingFang SC', 'STHeiti', 'Microsoft YaHei', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.8; margin: 0; padding: 0; }
         
+        /* 显式修复加粗显示不正确的问题 */
+        b, strong { font-weight: 700 !important; color: #000; }
+
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         
         header { text-align: center; padding-bottom: 40px; border-bottom: 2px solid var(--secondary); margin-bottom: 40px; }
@@ -25,36 +27,37 @@
         header p { color: var(--secondary); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; }
 
         /* 导航按钮 */
-        .nav-container { position: sticky; top: 0; z-index: 100; background: rgba(247, 243, 240, 0.95); padding: 15px 0; border-bottom: 1px solid #ddd; margin-bottom: 50px; }
-        .nav-title { text-align: center; font-size: 1.1em; color: var(--primary); margin-bottom: 15px; font-weight: bold; }
-        .nav-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .nav-btn { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85em; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .nav-container { position: sticky; top: 0; z-index: 100; background: rgba(247, 243, 240, 0.95); padding: 15px 0; border-bottom: 1px solid #ddd; margin-bottom: 50px; text-align: center; }
+        .nav-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 1000px; margin: 0 auto; }
+        .nav-btn { background: var(--primary); color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8em; text-decoration: none; transition: 0.3s; }
         .nav-btn:hover { background: var(--secondary); transform: translateY(-2px); }
 
         /* 日程卡片 */
         .day-card { background: var(--card-bg); margin-bottom: 70px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border-top: 5px solid var(--primary); }
-        .day-header { background: var(--accent); padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
-        .day-header h2 { margin: 0; color: var(--primary); letter-spacing: 2px; }
-        .day-header span { color: var(--secondary); font-weight: bold; }
+        .day-header { background: #EAE3DA; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .day-header h2 { margin: 0; color: var(--primary); font-size: 1.5em; }
+        .day-header .date-tag { color: var(--secondary); font-weight: bold; }
 
         .day-content { padding: 40px; }
         .section { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #f0f0f0; }
         .section:last-child { border-bottom: none; }
 
-        .time-tag { display: inline-block; background: var(--secondary); color: white; padding: 3px 18px; font-size: 0.8em; margin-bottom: 15px; border-radius: 2px; }
+        .time-tag { display: inline-block; background: var(--secondary); color: white; padding: 3px 15px; font-size: 0.8em; margin-bottom: 15px; border-radius: 2px; }
         .spot-title { font-size: 1.7em; color: var(--primary); margin: 5px 0; font-weight: 600; display: block; }
         .subway-info { display: block; font-size: 0.9em; color: #8c7b52; margin-bottom: 20px; font-weight: bold; }
-        .description { text-align: justify; color: var(--text-muted); font-size: 1.05em; margin-bottom: 20px; }
         
-        .food-box { background: #FCF9F5; border-left: 5px solid var(--secondary); padding: 25px; margin-top: 20px; font-size: 1em; }
-        .food-box b { color: var(--primary); }
+        .description { text-align: justify; color: var(--text-muted); font-size: 1.05em; margin-bottom: 25px; }
+        .description p { margin-bottom: 15px; }
 
-        .footer { text-align: center; padding: 60px; color: var(--text-muted); font-size: 0.9em; background: #eee; border-radius: 4px; }
+        /* 美食盒 */
+        .food-box { background: #FCF9F5; border-left: 5px solid var(--secondary); padding: 25px; margin-top: 20px; border-radius: 0 8px 8px 0; }
+        .food-box h4 { margin-top: 0; color: var(--primary); font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+        .footer { text-align: center; padding: 60px; color: var(--text-muted); font-size: 0.9em; background: #eee; }
 
         @media (max-width: 768px) {
             .day-header { flex-direction: column; gap: 10px; text-align: center; }
             .day-content { padding: 20px; }
-            .nav-btn { padding: 6px 12px; font-size: 0.75em; }
         }
     </style>
 </head>
@@ -63,12 +66,10 @@
 <div class="container">
     <header>
         <h1>2026川渝春节全家欢旅</h1>
-        <p>Chengdu & Chongqing Heritage Tour | Morandi Aesthetic Plan</p>
+        <p>Chengdu & Chongqing Custom Heritage Plan | Morandi Aesthetic</p>
     </header>
 
-    <!-- 交互按钮导航 -->
     <div class="nav-container">
-        <div class="nav-title">快速跳转至每日行程</div>
         <div class="nav-buttons">
             <a href="#day1" class="nav-btn">D1 抵蓉/春熙路</a>
             <a href="#day2" class="nav-btn">D2 熊猫基地/宽窄</a>
@@ -77,7 +78,7 @@
             <a href="#day5" class="nav-btn">D5 入渝/江滩公园</a>
             <a href="#day6" class="nav-btn">D6 鹅岭/光环森林</a>
             <a href="#day7" class="nav-btn">D7 博物馆/来福士</a>
-            <a href="#day8" class="nav-btn">D8 武隆天生三桥</a>
+            <a href="#day8" class="nav-btn">D8 武隆喀斯特</a>
             <a href="#day9" class="nav-btn">D9 步道/龙门浩</a>
             <a href="#day10" class="nav-btn">D10 返程</a>
         </div>
@@ -86,16 +87,21 @@
     <!-- DAY 1 -->
     <div id="day1" class="day-card">
         <div class="day-header">
-            <h2>DAY 1 · 2月17日 (初一)</h2>
-            <span>始于烟火 · 熊猫初见</span>
+            <h2>DAY 1 · 成都：市井年味</h2>
+            <span class="date-tag">2月17日 (初一)</span>
         </div>
         <div class="day-content">
             <div class="section">
                 <span class="time-tag">下午</span>
-                <span class="spot-title">人民公园 & 熊猫邮局总店</span>
+                <span class="spot-title">人民公园 (鹤鸣茶社) & 熊猫邮局总店</span>
                 <span class="subway-info">📍 地铁：2号线【人民公园】站B口</span>
                 <div class="description">
-                    大年初一的成都，最地道的年味藏在人民公园。作为成都慢生活的“活化石”，园内的鹤鸣茶社是必到之处。这处百年茶社在大年初一挂满红灯笼，您可以为全家点上一桌盖碗茶，长辈们可以体验传统的掏耳朵，5岁半的孩子则可以观察有趣的四川长嘴壶茶艺表演。随后步行至大门口的**熊猫邮局 (少城路总店)**。这是全球首个熊猫主题邮局，不仅有着巨型熊猫邮差雕像，还可以购买到独家设计的熊猫生肖邮票和明信片。让孩子亲手盖上邮戳，寄出一份来自2026年春节的祝福。这里不仅是文化打卡地，更是让长期生活在海外的孩子建立文化归属感的温馨开端。
+                    <p>大年初一，成都在盖碗茶的氤氲中苏醒。<b>人民公园</b>是体验成都“慢生活”的灵魂。<b>鹤鸣茶社</b>拥有百年历史，在这点一盏明前花茶，长辈可以享受地道的“采耳”服务，孩子则会被四川特有的长嘴壶掺茶表演吸引。公园斜对面的<b>熊猫邮局总店</b>是全球首家熊猫主题邮局，不仅有巨型熊猫邮差雕塑，还可寄出盖有生肖邮戳的专属明信片。对在欧洲长大的孩子来说，这是建立文化归属感的趣味起点。</p>
+                </div>
+                <div class="food-box">
+                    <h4>🍴 附近美食推荐</h4>
+                    · <b>老妈蹄花 (总店)</b>：距公园步行5分钟。蹄花炖得雪白软糯，入口即化，汤头鲜美，非常适合老人和孩子暖胃，完全不辣。<br>
+                    · <b>钟水饺/赖汤圆</b>：园内及附近有老字号，适合作为下午点心，甜辣可口。
                 </div>
             </div>
             <div class="section">
@@ -103,71 +109,12 @@
                 <span class="spot-title">春熙路 & IFS爬墙熊猫</span>
                 <span class="subway-info">📍 地铁：2/3号线【春熙路】站</span>
                 <div class="description">
-                    春熙路是成都是时尚与古老的交汇点。大年初一的街道璀璨夺目。全家可以漫步在IFS国际金融中心，仰望那只著名的“爬墙大熊猫”。带孩子乘电梯直达7楼雕塑广场，不仅可以与大熊猫的正脸合影，还能俯瞰热闹的春熙路全景。春节期间，这里的灯火装扮极具东方韵味，现代高层建筑与传统节庆元素交错。对老人来说，春熙路的街道平坦无坡，非常适合饭后消食，在熙攘的人群中感受“成都式年味”的活力。
+                    <p>春熙路是时尚成都的窗口。IFS国际金融中心那只试图翻墙的<b>巨型熊猫雕塑</b>是地标，乘电梯至7楼平台可与它合影。初一的春熙路红火热闹，现代摩天楼与传统节日挂饰结合，气场十足。</p>
                 </div>
                 <div class="food-box">
-                    <b>🍜 特色晚餐建议：仓鹏鹏妈老火锅</b><br>
-                    建议前往春熙路/太古里店。这是成都当地口碑极佳的火锅品牌，以底料醇厚、食材新鲜著称。由于是春节，建议提前排号。火锅桌前的全家团圆，象征着新一年的红红火火。
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAY 2 -->
-    <div id="day2" class="day-card">
-        <div class="day-header">
-            <h2>DAY 2 · 2月18日 (初二)</h2>
-            <span>黑白森林 · 巷弄旧梦</span>
-        </div>
-        <div class="day-content">
-            <div class="section">
-                <span class="time-tag">上午</span>
-                <span class="spot-title">成都大熊猫繁育研究基地</span>
-                <span class="subway-info">📍 地铁：3号线【熊猫大道】站，换乘接驳巴士</span>
-                <div class="description">
-                    大年初二清晨（建议8点入园），是大熊猫最活跃的时刻。基地内竹林蓊郁，环境幽深。为了最大限度保护长辈和孩子的体力，务必乘坐观光车直达基地最高点的月亮产房，随后顺着缓坡向下步行。5岁半的孩子看到可爱的熊猫宝宝在木床上翻滚，定会惊叹不已。长辈们可以在葱郁的竹林间呼吸新鲜空气，观察这些活化石采食嫩竹的憨态。作为全球最大的熊猫人工繁育机构，这里不仅是动物园，更是科普自然知识的生动课室，带给全家极致的治愈感。
-                </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">下午</span>
-                <span class="spot-title">宽窄巷子</span>
-                <span class="subway-info">📍 地铁：4号线【宽窄巷子】站</span>
-                <div class="description">
-                    宽窄巷子是老成都“少城”文化的缩影，由宽巷子、窄巷子和井巷子平行排列组成。对于在欧洲长大的孩子，这里的青砖黛瓦、木雕石刻展现了独特的中式建筑逻辑。大年初二的街头满是年画、泥塑等民俗艺人的展示，年味十足。长辈们可以在宽巷子里寻觅老成都的回忆，在窄巷子体验精致的茶室艺术。全家可以在这里观看一场川剧变脸表演，在那瞬间变换的面谱中，领略川蜀文化的变幻莫测与博大精深。
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAY 3 -->
-    <div id="day3" class="day-card">
-        <div class="day-header">
-            <h2>DAY 3 · 2月19日 (初三)</h2>
-            <span>诗情画意 · 禅意与民俗</span>
-        </div>
-        <div class="day-content">
-            <div class="section">
-                <span class="time-tag">上午</span>
-                <span class="spot-title">杜甫草堂</span>
-                <span class="subway-info">📍 地铁：4号线【草堂北路】站</span>
-                <div class="description">
-                    杜甫草堂是唐代大诗人杜甫流寓成都时的故居，不仅是文学朝圣地，更是极具川西风格的古典园林。整个草堂古木参天，梅林与竹丛相映成趣。对于长辈，在诗人曾经吟诵“窗含西岭千秋雪”的地方漫步，具有极高的文化情怀。著名的“红墙夹道”是拍摄全家福的绝佳背景，阳光穿过竹林洒在深红色照壁上，极具东方意境。5岁半的孩子可以在平缓的步道上奔跑，观察湖中的锦鲤。这里的路面平坦，几乎没有台阶，对65岁的老人非常友好。
-                </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">下午</span>
-                <span class="spot-title">文殊院</span>
-                <span class="subway-info">📍 地铁：1号线【文殊院】站</span>
-                <div class="description">
-                    文殊院是川西著名的佛教圣地，始建于隋朝，古朴而静谧。不同于商业景区的喧嚣，文殊院内的古柏与银杏见证了千年的风霜。长辈们可以在这里的茶室小坐，感受僧侣与居士的淡泊节奏。院外的文殊坊集结了成都众多的传统糕点铺（如闻酥园），可以买到最地道的椒盐酥。这里节奏极慢，是成都“闹中取静”的典范，完美契合了悠闲游的调性，让疲惫的身心在佛音萦绕中得到放松。
-                </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">晚上</span>
-                <span class="spot-title">武侯祠灯会 (大庙会)</span>
-                <span class="subway-info">📍 地铁：3号线【高升桥】站</span>
-                <div class="description">
-                    春节期间的武侯祠大庙会是成都最具人气的民俗盛事。夜幕降临，巨大的主题灯组照亮了三国文化殿堂，现代光影与古建红墙交织。对于孩子，五彩斑斓的灯笼和互动机械灯组如同进入了《大鱼海棠》的世界。锦里古街的红灯笼连成片，全家人可以慢行其中，品尝红糖糍粑、牛肉焦饼。尽管人流较多，但那份热气腾腾、欢声笑语的中国年氛围，是成都之旅中最具仪式感的记忆。
+                    <h4>🍴 附近美食推荐</h4>
+                    · <b>仓鹏鹏妈老火锅</b>：春熙路/四圣祠店。底料浓郁但可以点鸳鸯锅，食材新鲜，服务体贴，是开年团圆饭的好选择。<br>
+                    · <b>陈麻婆豆腐 (旗舰店)</b>：如果不想吃火锅，这里的经典川菜（如宫保鸡丁、牛肉焦饼）老人小孩都能接受。
                 </div>
             </div>
         </div>
@@ -176,16 +123,41 @@
     <!-- DAY 4 -->
     <div id="day4" class="day-card">
         <div class="day-header">
-            <h2>DAY 4 · 2月20日 (初四)</h2>
-            <span>旷世工程 · 熊猫野趣</span>
+            <h2>DAY 4 · 都江堰深度包车</h2>
+            <span class="date-tag">2月20日 (初四)</span>
         </div>
         <div class="day-content">
             <div class="section">
-                <span class="time-tag">全天包车</span>
-                <span class="spot-title">熊猫谷 & 都江堰景区</span>
-                <span class="subway-info">📍 交通：全天商务包车由成都出发</span>
+                <span class="time-tag">08:00 - 11:30</span>
+                <span class="spot-title">都江堰熊猫谷 (野放中心)</span>
                 <div class="description">
-                    上午前往**熊猫谷**，这里是熊猫回归自然的“预科学校”，环境更原始，游客较少。最吸引5岁半孩子的亮点是“小熊猫放养区”，这些火红色的小可爱可能就在你脚边的灌木丛里穿行。下午游览**都江堰水利工程**。我们将采用最省力的“秦堰楼进入”方案，从最高处俯瞰鱼嘴分水堤、飞沙堰，领略2000多年前李冰父子的治水智慧。傍晚在南桥观赏“蓝眼泪”江景，感受大工业时代的灯光艺术与古老文明的碰撞。
+                    <p><b>熊猫谷</b>全称大熊猫繁育研究基地都江堰野放繁育中心。不同于市区的熊猫基地，这里群山环抱，更接近大熊猫的自然栖息环境。最惊艳的莫过于<b>小熊猫放养区</b>：这些火红色的小精灵在树枝间自由穿行，可能就在您身边经过，孩子会惊喜万分。这里游客相对较少，步道平缓，适合老人悠闲漫步，呼吸富氧空气。</p>
+                </div>
+            </div>
+            <div class="section">
+                <span class="time-tag">11:30 - 13:30</span>
+                <span class="spot-title">钟书阁 & 午餐休整</span>
+                <div class="description">
+                    <p><b>钟书阁 (融创茂店)</b>被誉为中国最美的魔幻书店。通过镜面天花板和巨大的环形书架，打造出如霍格沃茨般的视觉冲击。不仅是拍照胜地，也是行程中段绝佳的室内休息站。</p>
+                </div>
+                <div class="food-box">
+                    <h4>🍴 都江堰特色午餐</h4>
+                    · <b>白果炖鸡</b>：青城山区域的特产，汤浓鲜美，白果润肺，最适合老人孩子。<br>
+                    · <b>张家小院</b>：地道的农家川菜，推荐葱姜排骨和特色豆花。
+                </div>
+            </div>
+            <div class="section">
+                <span class="time-tag">13:30 - 16:30</span>
+                <span class="spot-title">都江堰水利工程 (秦堰楼入)</span>
+                <div class="description">
+                    <p><b>都江堰</b>是全世界迄今为止仅存的、以无坝引水为特征的古代水利工程，历经2000多年仍造福于成都平原。<b>悠闲秘籍：</b> 包车司机送至<b>秦堰楼出口</b>进。这是最高点，全家人只需一路下行，俯瞰鱼嘴（分水工程）、飞沙堰、宝瓶口，壮观景象尽收眼底。这种走法极大节省了长辈体力，是完美的避坑路线。</p>
+                </div>
+            </div>
+            <div class="section">
+                <span class="time-tag">16:30 - 19:00</span>
+                <span class="spot-title">南桥、仰天窝 & 蓝眼泪</span>
+                <div class="description">
+                    <p>漫步<b>南桥</b>，江水波涛滚滚。随后前往<b>仰天窝广场</b>打卡那只躺着自拍的巨型熊猫装置。傍晚时分回到<b>天府源廊桥</b>，观赏如梦幻般的<b>“蓝眼泪”灯光秀</b>，江水在灯影下呈现璀璨的荧光蓝，震撼无比。</p>
                 </div>
             </div>
         </div>
@@ -194,76 +166,27 @@
     <!-- DAY 5 -->
     <div id="day5" class="day-card">
         <div class="day-header">
-            <h2>DAY 5 · 2月21日 (初五)</h2>
-            <span>初见山城 · 江滩璀璨</span>
+            <h2>DAY 5 · 初见山城夜色</h2>
+            <span class="date-tag">2月21日 (初五)</span>
         </div>
         <div class="day-content">
             <div class="section">
                 <span class="time-tag">下午</span>
-                <span class="spot-title">解放碑 & 假日四季酒店入住</span>
-                <span class="subway-info">📍 地铁：2号线【临江门】站 / 1号线【较场口】站</span>
+                <span class="spot-title">解放碑 & 酒店入住</span>
                 <div class="description">
-                    从成都东站乘坐高铁（约1.5小时）抵达重庆沙坪坝后，打车前往解放碑假日四季酒店。办理入住后，步行即达重庆的精神地标——解放碑。对于初到重庆的家人，这里高耸入云的建筑群与纵横交错的天桥会瞬间颠覆对“平原城市”的认知。
+                    10:40高铁入渝。抵达解放碑心脏地带入住。解放碑是重庆的精神坐标，周边高楼林立，充满了赛博朋克的都市感。
+                </div>
+                <div class="food-box">
+                    <h4>🍴 附近美食推荐</h4>
+                    · <b>杨记隆府 (旗舰店)</b>：重庆江湖菜代表。大麻圆是必点，孩子最爱；推荐招牌鱼，刺少肉嫩。<br>
+                    · <b>八一路好吃街</b>：汇集了酸辣粉、山城汤圆等重庆地道小吃。
                 </div>
             </div>
             <div class="section">
                 <span class="time-tag">晚上</span>
-                <span class="spot-title">江北嘴江滩公园 (看洪崖洞对岸全景)</span>
-                <span class="subway-info">📍 地铁：6号线【江北城】站，步行至码头江滩</span>
+                <span class="spot-title">江北嘴江滩公园 (看洪崖洞全景)</span>
                 <div class="description">
-                    按照您的要求，我们将**江滩公园**安排在入渝首晚。与其去洪崖洞内部被人潮挤压，不如跨过江来到江北嘴浅滩。这里拥有观赏渝中半岛和洪崖洞全景的黄金视角。大年初五，对岸的吊脚楼群灯火辉煌，如同宫崎骏电影里的幻境。江滩边地势平坦开阔，孩子可以欢快地奔跑，长辈们则可以坐在江边吹吹微风，不用攀爬楼梯即可饱览重庆最震撼的城市天际线，静谧且奢华。
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAY 6 -->
-    <div id="day6" class="day-card">
-        <div class="day-header">
-            <h2>DAY 6 · 2月22日 (初六)</h2>
-            <span>魔幻森林 · 赛步穿梭</span>
-        </div>
-        <div class="day-content">
-            <div class="section">
-                <span class="time-tag">上午/下午</span>
-                <span class="spot-title">鹅岭公园 - 二厂 - 李子坝</span>
-                <span class="subway-info">📍 交通：建议打车直达公园顶部门口</span>
-                <div class="description">
-                    这是重庆著名的“下坡悠闲线”。先乘车直达**鹅岭公园**顶部的瞰胜楼，两江全景尽收眼底。随后漫步至隔壁的**鹅岭二厂**，这里曾是民国印钞厂，现为文艺街区，独特的斑驳工业风深受孩子喜爱。最后沿坡步行至**李子坝**打卡轻轨穿楼，看列车呼啸进楼的奇观。
-                </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">傍晚</span>
-                <span class="spot-title">光环购物广场 (沐光森林)</span>
-                <span class="subway-info">📍 地铁：5号线【重光】站</span>
-                <div class="description">
-                    下午前往**光环购物广场**。这里的“沐光森林”是一座跨越数层的室内植物园，高达42米的室内瀑布和悬浮森林景观让孩子仿佛置身于阿凡达的世界。商场内温度宜人，长辈们可以悠闲地散步购物，免受室外寒气侵袭，是全家共享天伦之乐的高端悠闲点。
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAY 7 -->
-    <div id="day7" class="day-card">
-        <div class="day-header">
-            <h2>DAY 7 · 2月23日 (初七)</h2>
-            <span>三峡往事 · 云端展望</span>
-        </div>
-        <div class="day-content">
-            <div class="section">
-                <span class="time-tag">上午</span>
-                <span class="spot-title">中国三峡博物馆</span>
-                <span class="subway-info">📍 地铁：2号线【曾家岩】站</span>
-                <div class="description">
-                    三峡博物馆不仅是建筑瑰宝，更是连接重庆历史的隧道。必看360度环幕电影《大三峡》，站在影厅中心，仿佛飞跃巫峡，那种震撼感无与伦比。馆内“巴渝民俗”展区复原了老重庆街道，对孩子来说像逛微观世界。馆内设施完善，全电梯覆盖，对老人极其友好。
-                </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">下午</span>
-                <span class="spot-title">来福士·探索舱观景台</span>
-                <span class="subway-info">📍 地铁：1号线【朝天门】站</span>
-                <div class="description">
-                    来到城市尖端的来福士，在250米高的空中连廊“探索舱”俯瞰长江与嘉陵江的“鸳鸯锅”汇流。这里有针对孩子的科幻互动展，长辈们可以站在玻璃栈道挑战胆量，全角度平视重庆的钢铁森林，感受极致的城市地标之美。
+                    <p><b>江滩公园</b>位于江北嘴码头，与洪崖洞隔江相望。这里有最宽阔的视野，能拍到洪崖洞、千厮门大桥和渝中半岛灯火全景。地势平整，孩子可以奔跑玩耍，老人坐在江边吹风。不去洪崖洞里面挤，这才是悠闲重庆的最高境界。</p>
                 </div>
             </div>
         </div>
@@ -272,16 +195,31 @@
     <!-- DAY 8 -->
     <div id="day8" class="day-card">
         <div class="day-header">
-            <h2>DAY 8 · 2月24日 (初八)</h2>
-            <span>地心世界 · 武隆探秘</span>
+            <h2>DAY 8 · 武隆喀斯特自然奇观</h2>
+            <span class="date-tag">2月24日 (初八)</span>
         </div>
         <div class="day-content">
             <div class="section">
-                <span class="time-tag">全天包车</span>
-                <span class="spot-title">天生三桥 & 乌江画廊观景台</span>
-                <span class="subway-info">📍 交通：包车由重庆往返武隆</span>
+                <span class="time-tag">三胜地详述</span>
+                <span class="spot-title">1. 乌江画廊观景台 (翡翠画卷)</span>
                 <div class="description">
-                    今日是自然景观的震撼日。早起乘车前往武隆，途中经过乌江画廊观景台拍照。抵达**天生三桥**，乘坐80米高的垂直电梯直降坑底。漫步坑底，四周是千米深的绝壁。地面平缓，适合老人散步。特别提示：最后一段路务必乘坐景区电瓶车，免去长距离攀爬，完美保护长辈和孩子的体力。
+                    <p>从重庆前往武隆的包车途中，会经过<b>乌江画廊</b>。这里的水质清澈见底，呈现迷人的<b>翡翠绿</b>。两岸奇峰对峙，如同一幅巨大的山水长卷。司机在观景台停靠，全家人无需走路即可欣赏到“轻舟已过万重山”的意境，非常省力且惊艳。</p>
+                </div>
+            </div>
+            <div class="section">
+                <span class="spot-title">2. 天生三桥 (天坑绝景)</span>
+                <div class="description">
+                    <p>世界自然遗产，也是《变形金刚4》和《满城尽带黄金甲》取景地。这是世界上最大的天生桥群。<b>游览路线：</b> 乘坐80米高的<b>垂直电梯</b>降入坑底。四周绝壁环抱，三座巨大的石桥连接天际。坑底平整，是典型的地下世界奇观。步行至出口处<b>务必坐15元/人的电瓶车</b>，直接送至大巴点，免去上坡之累。</p>
+                </div>
+            </div>
+            <div class="section">
+                <span class="spot-title">3. 龙水峡地缝 (地心漫步)</span>
+                <div class="description">
+                    <p><b>龙水峡地缝</b>是几千万年前由于地壳运动形成的深切峡谷。全长2公里，谷深200-500米，最窄处仅几米。这里有震撼的<b>银河瀑布</b>，水汽氤氲，给人一种“地心游记”的魔幻感。<b>特别提示：</b> 地缝内部楼梯较多且环境潮湿。考虑到65岁长辈，建议根据当天体力决定。若长辈膝盖有旧伤，建议在天生三桥游览完后选择休息，让年轻人带孩子前往。</p>
+                </div>
+                <div class="food-box">
+                    <h4>🍴 武隆特色美食</h4>
+                    · <b>碗碗羊肉</b>：武隆特色，羊肉红亮不膻，肉质细嫩，配上当地手工粉，热气腾腾。
                 </div>
             </div>
         </div>
@@ -290,47 +228,28 @@
     <!-- DAY 9 -->
     <div id="day9" class="day-card">
         <div class="day-header">
-            <h2>DAY 9 · 2月25日 (初九)</h2>
-            <span>跨江飞越 · 历史回响</span>
+            <h2>DAY 9 · 索道与绝美老街</h2>
+            <span class="date-tag">2月25日 (初九)</span>
         </div>
         <div class="day-content">
             <div class="section">
-                <span class="time-tag">上午</span>
-                <span class="spot-title">山城步道 (悬崖栈道)</span>
-                <span class="subway-info">📍 地铁：1号线【七星岗】站，高位进入</span>
+                <span class="time-tag">下午</span>
+                <span class="spot-title">下浩里、龙门浩老街 & 长江索道</span>
                 <div class="description">
-                    从七星岗进入山城步道，这是最省力的“下坡游”。步道悬挂在古城墙之上，一边是老屋，一边是浩渺长江。长辈们可以在这里找到老重庆的情怀，孩子则会被那些长在悬崖上的大树吸引。这是与城市灵魂对话最安静的方式。
+                    <p>乘坐<b>长江索道</b>飞越长江后，来到南岸区。<b>下浩里</b>是近期重庆最红的文艺老街，将老旧民居与现代艺术装置融合，极其出片。紧连着的<b>龙门浩老街</b>则是开埠时期的洋楼群，青砖红瓦。这里正对渝中半岛，是看重庆“森林城市”全景的最佳位。找个靠江咖啡馆，慢看江水流逝。</p>
                 </div>
-            </div>
-            <div class="section">
-                <span class="time-tag">下午/晚上</span>
-                <span class="spot-title">长江索道 - 下浩里 - 龙门浩老街</span>
-                <span class="subway-info">📍 交通：索道跨江后打车前往龙门浩</span>
-                <div class="description">
-                    乘坐长江索道飞越长江，是重庆的必打卡仪式。到达南岸后，步入**下浩里**和**龙门浩老街**。这里是重庆最具品质的开埠遗址群，青砖红墙极具质感。傍晚在老街临江餐厅吃晚餐，看江水流逝，城市亮灯。这是旅程的最后一晚，静谧且温馨。
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAY 10 -->
-    <div id="day10" class="day-card">
-        <div class="day-header">
-            <h2>DAY 10 · 2月26日 (初十)</h2>
-            <span>慢调归途</span>
-        </div>
-        <div class="day-content">
-            <div class="section">
-                <div class="description">
-                    在酒店享用一顿悠闲的早餐，给孩子买点可爱的熊猫文创，给长辈带点重庆的特产。5个人，一路上不仅有美景，更有合家欢时光。2月的川渝之旅在春意渐浓中结束，愉快返程。
+                <div class="food-box">
+                    <h4>🍴 龙门浩老街深度觅食</h4>
+                    · <b>九街淑芬掌中宝串串</b>：虽然是串串，但店面精致，龙门浩店视野极佳。<br>
+                    · <b>下浩老火锅</b>：在老街巷子里，很有氛围感。<br>
+                    · <b>特色茶社/咖啡</b>：老街里有很多藏在洋房里的甜品店，适合下午茶。
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>© 2026 川渝全家欢旅行程单 | 祝您及家人新年快乐，旅途平安！</p>
-        <p>温馨提示：春节期间请提前3-7天预约热门景点。成都熊猫基地、武侯祠、长江索道、三峡博物馆为必预约项。</p>
+        <p>2026.02.17 - 02.26 平安顺遂！</p>
     </div>
 </div>
 
